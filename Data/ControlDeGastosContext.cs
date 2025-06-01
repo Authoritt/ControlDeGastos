@@ -1,6 +1,7 @@
 ﻿using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore;
+using ControlDeGastos.Models;
 
 namespace ControlDeGastos.Data
 {
@@ -9,6 +10,7 @@ namespace ControlDeGastos.Data
         public ControlDeGastosContext(DbContextOptions<ControlDeGastosContext> options)
             : base(options)
         { }
+     //   public DbSet<DepositoModel> Deposito { get; set; }
 
         protected override void OnModelCreating(ModelBuilder builder)
         {
@@ -17,4 +19,3 @@ namespace ControlDeGastos.Data
         }
     }
 }
- 
