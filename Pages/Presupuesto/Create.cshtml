@@ -1,0 +1,51 @@
+@page
+@model ControlDeGastos.Pages_Presupuesto.CreateModel
+
+        @{
+        ViewData["Title"] = "Create";
+        }
+        
+        <h1>Create</h1>
+        
+    <h4>PresupuestoModel</h4>
+    <hr />
+    <div class="row">
+    <div class="col-md-4">
+    <form method="post">
+    <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <div class="form-group">
+                <span class="text-danger">*</span>
+                <label asp-for="PresupuestoModel.usuario_id" class="control-label"></label>
+                <select asp-for="PresupuestoModel.usuario_id" class ="form-control" asp-items="ViewBag.usuario_id"></select>
+            </div>
+            <div class="form-group">
+                <span class="text-danger">*</span>
+                <label asp-for="PresupuestoModel.tipo_gasto_id" class="control-label"></label>
+                <select asp-for="PresupuestoModel.tipo_gasto_id" class ="form-control" asp-items="ViewBag.tipo_gasto_id"></select>
+            </div>
+            <div class="form-group">
+                <label asp-for="PresupuestoModel.mes" class="control-label"></label>
+                <input asp-for="PresupuestoModel.mes" class="form-control" />
+                <span asp-validation-for="PresupuestoModel.mes" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="PresupuestoModel.anio" class="control-label"></label>
+                <input asp-for="PresupuestoModel.anio" class="form-control" />
+                <span asp-validation-for="PresupuestoModel.anio" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="PresupuestoModel.monto" class="control-label"></label>
+                <input asp-for="PresupuestoModel.monto" class="form-control" />
+                <span asp-validation-for="PresupuestoModel.monto" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <input type="submit" value="Create" class="btn btn-primary" />
+            </div>
+        </form>
+    </div>
+</div>
+
+<div>
+    <a asp-page="Index">Back to List</a>
+</div>
+

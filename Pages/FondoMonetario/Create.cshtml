@@ -1,0 +1,38 @@
+@page
+@model ControlDeGastos.Pages_FondoMonetario.CreateModel
+
+        @{
+        ViewData["Title"] = "Create";
+        }
+        
+        <h1>Create</h1>
+        
+    <h4>FondoMonetarioModel</h4>
+    <hr />
+    <div class="row">
+    <div class="col-md-4">
+    <form method="post">
+    <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <div class="form-group">
+                <span class="text-danger">*</span>
+                <label asp-for="FondoMonetarioModel.nombre" class="control-label"></label>
+                <input asp-for="FondoMonetarioModel.nombre" class="form-control" />
+                <span asp-validation-for="FondoMonetarioModel.nombre" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <span class="text-danger">*</span>
+                <label asp-for="FondoMonetarioModel.tipo" class="control-label"></label>
+                <input asp-for="FondoMonetarioModel.tipo" class="form-control" />
+                <span asp-validation-for="FondoMonetarioModel.tipo" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <input type="submit" value="Create" class="btn btn-primary" />
+            </div>
+        </form>
+    </div>
+</div>
+
+<div>
+    <a asp-page="Index">Back to List</a>
+</div>
+

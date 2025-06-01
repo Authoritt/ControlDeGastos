@@ -1,0 +1,60 @@
+@page
+@model ControlDeGastos.Pages_Presupuesto.IndexModel
+
+@{
+    ViewData["Title"] = "Index";
+}
+
+<h1>Index</h1>
+
+<p>
+    <a asp-page="Create">Create New</a>
+</p>
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.PresupuestoModel[0].mes)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.PresupuestoModel[0].anio)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.PresupuestoModel[0].monto)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.PresupuestoModel[0].TipoGasto)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.PresupuestoModel[0].Usuario)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model.PresupuestoModel) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.mes)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.anio)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.monto)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.TipoGasto.codigo)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Usuario.Id)
+            </td>
+            <td>
+                <a asp-page="./Edit" asp-route-id="@item.rowid">Edit</a> |
+                <a asp-page="./Details" asp-route-id="@item.rowid">Details</a> |
+                <a asp-page="./Delete" asp-route-id="@item.rowid">Delete</a>
+            </td>
+        </tr>
+}
+    </tbody>
+</table>

@@ -1,0 +1,48 @@
+@page
+@model ControlDeGastos.Pages_GastoDetalle.IndexModel
+
+@{
+    ViewData["Title"] = "Index";
+}
+
+<h1>Index</h1>
+
+<p>
+    <a asp-page="Create">Create New</a>
+</p>
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.GastoDetalleModel[0].monto)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.GastoDetalleModel[0].Encabezado)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.GastoDetalleModel[0].TipoGasto)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model.GastoDetalleModel) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.monto)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Encabezado.rowid)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.TipoGasto.codigo)
+            </td>
+            <td>
+                <a asp-page="./Edit" asp-route-id="@item.rowid">Edit</a> |
+                <a asp-page="./Details" asp-route-id="@item.rowid">Details</a> |
+                <a asp-page="./Delete" asp-route-id="@item.rowid">Delete</a>
+            </td>
+        </tr>
+}
+    </tbody>
+</table>

@@ -1,0 +1,52 @@
+@page
+@model ControlDeGastos.Pages_Presupuesto.DeleteModel
+
+@{
+    ViewData["Title"] = "Delete";
+}
+
+<h1>Delete</h1>
+
+<h3>Are you sure you want to delete this?</h3>
+<div>
+    <h4>PresupuestoModel</h4>
+    <hr />
+    <dl class="row">
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.PresupuestoModel.mes)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.PresupuestoModel.mes)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.PresupuestoModel.anio)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.PresupuestoModel.anio)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.PresupuestoModel.monto)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.PresupuestoModel.monto)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.PresupuestoModel.TipoGasto)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.PresupuestoModel.TipoGasto.codigo)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.PresupuestoModel.Usuario)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.PresupuestoModel.Usuario.Id)
+        </dd>
+    </dl>
+    
+    <form method="post">
+        <input type="hidden" asp-for="PresupuestoModel.rowid" />
+        <input type="submit" value="Delete" class="btn btn-danger" /> |
+        <a asp-page="./Index">Back to List</a>
+    </form>
+</div>

@@ -1,0 +1,49 @@
+@page
+@model ControlDeGastos.Pages_GastoEncabezado.DetailsModel
+
+@{
+    ViewData["Title"] = "Details";
+}
+
+<h1>Details</h1>
+
+<div>
+    <h4>GastoEncabezadoModel</h4>
+    <hr />
+    <dl class="row">
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.GastoEncabezadoModel.fecha)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.GastoEncabezadoModel.fecha)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.GastoEncabezadoModel.observaciones)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.GastoEncabezadoModel.observaciones)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.GastoEncabezadoModel.nombre_comercio)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.GastoEncabezadoModel.nombre_comercio)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.GastoEncabezadoModel.tipo_documento)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.GastoEncabezadoModel.tipo_documento)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.GastoEncabezadoModel.FondoMonetario)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.GastoEncabezadoModel.FondoMonetario.nombre)
+        </dd>
+    </dl>
+</div>
+<div>
+    <a asp-page="./Edit" asp-route-id="@Model.GastoEncabezadoModel.rowid">Edit</a> |
+    <a asp-page="./Index">Back to List</a>
+</div>

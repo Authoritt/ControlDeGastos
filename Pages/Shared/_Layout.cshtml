@@ -30,13 +30,31 @@
                                 <button type="submit" class="nav-link btn btn-link">Cerrar sesión</button>
                             </form>
                         </li>
-                        <ul class="navbar-nav ms-auto">
-                            <!-- ...otros ítems... -->
-                            <li class="nav-item">
-                                <a asp-page="/TipoGastosModel/Index">Tipos de Gasto</a>
-                            </li>
-                        </ul>
                     </ul>
+                    <div class="navbar-collapse collapse d-sm-inline-flex justify-content-between">
+                        <ul class="navbar-nav flex-grow-1">
+
+                            <li class="nav-item">
+                                <a class="nav-link text-dark" asp-page="/TipoGastos/Index">Tipos de Gasto</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link text-dark" asp-page="/Deposito/Index">Depósitos</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link text-dark" asp-page="/FondoMonetario/Index">Fondos Monetarios</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link text-dark" asp-page="/GastoEncabezado/Index">Gastos</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link text-dark" asp-page="/GastoDetalle/Index">Detalles de Gasto</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link text-dark" asp-page="/Presupuesto/Index">Presupuestos</a>
+                            </li>
+
+                        </ul>
+                    </div>
                 </div>
             </div>
         </nav>
