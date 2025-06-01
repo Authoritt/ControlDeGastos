@@ -6,29 +6,33 @@ namespace ControlDeGastos.Models
     [Table("t004_gasto_encabezado")]
     public class GastoEncabezadoModel
     {
-        [Column("f001_rowid_gasto_encabezado")]
+        [Key]
+        [Column("f001_rowid")]
         [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
         public int rowid { get; set; }
 
-        [Column("f002_fecha_gasto_encabezado")]
-        public DateTime fecha_gasto_encabezado { get; set; }
+        [Column("f002_fecha")]
+        public DateTime fecha { get; set; }
 
-        [Column("f003_fondo_monetario_id_gasto_encabezado")]
-        public int fondo_monetario_id_gasto_encabezado { get; set; }
+        [Column("f003_fondo_monetario_id")]
+        public int fondo_monetario_id { get; set; }
 
-        [Column("f004_observaciones_gasto_encabezado")]
+        [Column("f004_observaciones")]
         [StringLength(500)]
-        public string observaciones_gasto_encabezado { get; set; }
+        public string observaciones { get; set; }
 
-        [Column("f005_nombre_comercio_gasto_encabezado")]
+        [Column("f005_nombre_comercio")]
         [StringLength(100)]
-        public string nombre_comercio_gasto_encabezado { get; set; }
+        public string nombre_comercio { get; set; }
 
-        [Column("f006_tipo_documento_gasto_encabezado")]
-        [StringLength(50)]
-        public string tipo_documento_gasto_encabezado { get; set; }
+        [Column("f006_tipo_documento")]
+        [StringLength(20)]
+        public string tipo_documento { get; set; } // Factura/Comprobante/Otro
 
-        [Column("f007_fondo_monetario_id_gasto_encabezado")]
-        public int fk_t002_fondo_monetario_gasto_encabezado { get; set; }
+        // Relaciones
+        [ForeignKey("fondo_monetario_id")]
+        public virtual FondoMonetarioModel FondoMonetario { get; set; }
+
+        public virtual ICollection<GastoDetalleModel> Detalles { get; set; }
     }
 }

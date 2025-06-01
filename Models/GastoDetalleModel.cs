@@ -1,3 +1,5 @@
+using ControlDeGastosControlDeGastos.Models;
+using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 
 namespace ControlDeGastos.Models
@@ -5,23 +7,26 @@ namespace ControlDeGastos.Models
     [Table("t005_gasto_detalle")]
     public class GastoDetalleModel
     {
-        [Column("f001_rowid_gasto_detalle")]
+        [Key]
+        [Column("f001_rowid")]
         [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
-        public int rowid_gasto_detalle { get; set; }
+        public int rowid { get; set; }
 
-        [Column("f002_encabezado_id_gasto_detalle")]
-        public int encabezado_id_gasto_detalle { get; set; }
+        [Column("f002_encabezado_id")]
+        public int encabezado_id { get; set; }
 
-        [Column("f003_tipo_gasto_id_gasto_detalle")]
-        public int tipo_gasto_id_gasto_detalle { get; set; }
+        [Column("f003_tipo_gasto_id")]
+        public int tipo_gasto_id { get; set; }
 
-        [Column("f004_monto_gasto_detalle")]
-        public decimal monto_gasto_detalle { get; set; }
+        [Column("f004_monto")]
+        //[Column(TypeName = "decimal(18,2)")]
+        public decimal monto { get; set; }
 
-        [Column("f005_encabezado_id_gasto_detalle")]
-        public int fk_t004_encabezado_id_gasto_detalle { get; set; }
+        // Relaciones
+        [ForeignKey("encabezado_id")]
+        public virtual GastoEncabezadoModel Encabezado { get; set; }
 
-        [Column("f006_tipo_gasto_id_gasto_detalle")]
-        public int fk_t001_tipo_gasto_id_gasto_detalle { get; set; }
+        [ForeignKey("tipo_gasto_id")]
+        public virtual TipoGastoModel TipoGasto { get; set; }
     }
 }

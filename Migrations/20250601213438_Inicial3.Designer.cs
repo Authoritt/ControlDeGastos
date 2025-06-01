@@ -4,6 +4,7 @@ using ControlDeGastos.Data;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 #nullable disable
@@ -11,9 +12,11 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace ControlDeGastos.Migrations
 {
     [DbContext(typeof(ControlDeGastosContext))]
-    partial class ControlDeGastosContextModelSnapshot : ModelSnapshot
+    [Migration("20250601213438_Inicial3")]
+    partial class Inicial3
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -209,9 +212,6 @@ namespace ControlDeGastos.Migrations
                         .HasColumnName("f003_nombre");
 
                     b.HasKey("rowid");
-
-                    b.HasIndex("codigo")
-                        .IsUnique();
 
                     b.ToTable("t001_tipo_gasto");
                 });

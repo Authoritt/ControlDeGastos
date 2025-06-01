@@ -1,20 +1,28 @@
+using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 
 namespace ControlDeGastos.Models
 {
-    [Table("t001_tipo_gasto")]
+    [Table("t002_fondo_monetario")]
     public class FondoMonetarioModel
     {
-        [Column("f001_rowid_fondo_monetario")]
+        [Key]
+        [Column("f001_rowid")]
         [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
-        public int id_fondo_monetario { get; set; }
+        public int rowid { get; set; }
 
-        [Column("f002_fondo_monetario")]
+        [Column("f002_nombre")]
+        [Required]
         [StringLength(100)]
-        public string tipo_fondo_monetario { get; set; }
+        public string nombre { get; set; } // Ej: "Cuenta Bancaria X"
 
-        [Column("f003_descripcion_fondo_monetario")]
-        [StringLength(200)]
-        public string? descripcion_fondo_monetario { get; set; }
+        [Column("f003_tipo")]
+        [Required]
+        [StringLength(20)]
+        public string tipo { get; set; } // "Bancario" o "Efectivo"
+
+        // Relaciones
+        public virtual ICollection<GastoEncabezadoModel> Gastos { get; set; }
+        public virtual ICollection<DepositoModel> Depositos { get; set; }
     }
 }
