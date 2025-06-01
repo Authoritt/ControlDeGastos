@@ -12,15 +12,15 @@ namespace ControlDeGastosControlDeGastos.Models
         [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
         public int rowid { get; set; }
 
-        [Column("f002_codigo")]
+        [Column("f002_nombre")]
         [Required]
-        [StringLength(10)]
-        public string codigo { get; set; } // Autogenerado (GASTO-001)
+        [StringLength(35)]
+        public string nombre { get; set; } // Autogenerado (GASTO-001)
 
-        [Column("f003_nombre")]
+        [Column("f003_Descripcion")]
         [Required]
         [StringLength(100)]
-        public string nombre { get; set; }
+        public string Descripcion { get; set; }
 
         // Relaciones
         public virtual ICollection<PresupuestoModel> Presupuestos { get; set; }

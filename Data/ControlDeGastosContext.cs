@@ -34,7 +34,7 @@ namespace ControlDeGastos.Data
                 .OnDelete(DeleteBehavior.Cascade); // Eliminación en cascada
 
             modelBuilder.Entity<TipoGastoModel>()
-                .HasIndex(t => t.codigo)
+                .HasIndex(t => t.nombre)
                 .IsUnique(); // Código único
 
             modelBuilder.Entity<FondoMonetarioModel>()

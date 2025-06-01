@@ -10,51 +10,84 @@
 <p>
     <a asp-page="Create">Create New</a>
 </p>
-<table class="table">
-    <thead>
-        <tr>
-            <th>
-                @Html.DisplayNameFor(model => model.PresupuestoModel[0].mes)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.PresupuestoModel[0].anio)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.PresupuestoModel[0].monto)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.PresupuestoModel[0].TipoGasto)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.PresupuestoModel[0].Usuario)
-            </th>
-            <th></th>
-        </tr>
-    </thead>
-    <tbody>
-@foreach (var item in Model.PresupuestoModel) {
-        <tr>
-            <td>
-                @Html.DisplayFor(modelItem => item.mes)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.anio)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.monto)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.TipoGasto.codigo)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Usuario.Id)
-            </td>
-            <td>
-                <a asp-page="./Edit" asp-route-id="@item.rowid">Edit</a> |
-                <a asp-page="./Details" asp-route-id="@item.rowid">Details</a> |
-                <a asp-page="./Delete" asp-route-id="@item.rowid">Delete</a>
-            </td>
-        </tr>
+<form method="get" class="mb-4">
+    <div class="row">
+        <div class="col-md-4">
+            <div class="form-group">
+                <label for="anio" class="control-label">Año</label>
+                <select id="anio" name="anio" class="form-control" asp-for="AnioFiltro" required>
+                    <option value="">-- Seleccione año --</option>
+                    @foreach (var anio in Model.AniosDisponibles)
+                    {
+                        <option value="@anio">@anio</option>
+                    }
+                </select>
+            </div>
+        </div>
+        <div class="col-md-4">
+            <div class="form-group">
+                <label for="mes" class="control-label">Mes</label>
+                <select id="mes" name="mes" class="form-control" asp-for="MesFiltro">
+                    <option value="">-- Todos los meses --</option>
+                    <option value="1">Enero</option>
+                    <option value="2">Febrero</option>
+                    <option value="3">Marzo</option>
+                    <option value="4">Abril</option>
+                    <option value="5">Mayo</option>
+                    <option value="6">Junio</option>
+                    <option value="7">Julio</option>
+                    <option value="8">Agosto</option>
+                    <option value="9">Septiembre</option>
+                    <option value="10">Octubre</option>
+                    <option value="11">Noviembre</option>
+                    <option value="12">Diciembre</option>
+                </select>
+            </div>
+        </div>
+        <div class="col-md-4 align-self-end">
+            <button type="submit" class="btn btn-primary">Buscar</button>
+            <a asp-page="./Index" class="btn btn-secondary">Limpiar</a>
+        </div>
+    </div>
+</form>
+
+<!-- Tabla de Resultados -->
+@if (Model.PresupuestoModel.Any())
+{
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Mes</th>
+                <th>Año</th>
+                <th>Monto</th>
+                <th>Tipo de Gasto</th>
+                <th>Usuario</th>
+                <th>Acciones</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var item in Model.PresupuestoModel)
+            {
+                <tr>
+                    <td>@System.Globalization.DateTimeFormatInfo.CurrentInfo.GetMonthName(item.mes)</td>
+                    <td>@item.anio</td>
+                    <td>@item.monto.ToString("C")</td>
+                    <td>@item.TipoGasto.nombre - @item.TipoGasto.Descripcion</td>
+                    <td>@item.Usuario.UserName</td>
+                    <td>
+                        <a asp-page="./Edit" asp-route-id="@item.rowid" class="btn btn-sm btn-warning">Editar</a>
+                        <a asp-page="./Details" asp-route-id="@item.rowid" class="btn btn-sm btn-info">Detalles</a>
+                        <a asp-page="./Delete" asp-route-id="@item.rowid" class="btn btn-sm btn-danger">Eliminar</a>
+                    </td>
+                </tr>
+            }
+        </tbody>
+    </table>
 }
-    </tbody>
+else
+{
+    <div class="alert alert-warning">
+        No se encontraron presupuestos para el mes y año seleccionados.
+    </div>
+}
 </table>

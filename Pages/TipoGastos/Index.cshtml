@@ -14,10 +14,13 @@
     <thead>
         <tr>
             <th>
-                @Html.DisplayNameFor(model => model.TipoGastoModel[0].codigo)
+                Codigo @* @Html.DisplayNameFor(model => model.TipoGastoModel[0].rowid) *@
             </th>
             <th>
                 @Html.DisplayNameFor(model => model.TipoGastoModel[0].nombre)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.TipoGastoModel[0].Descripcion)
             </th>
             <th></th>
         </tr>
@@ -25,11 +28,14 @@
     <tbody>
 @foreach (var item in Model.TipoGastoModel) {
         <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.rowid)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.nombre)
+                </td>
             <td>
-                @Html.DisplayFor(modelItem => item.codigo)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.nombre)
+                @Html.DisplayFor(modelItem => item.Descripcion)
             </td>
             <td>
                 <a asp-page="./Edit" asp-route-id="@item.rowid">Edit</a> |
