@@ -1,8 +1,9 @@
+using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 
 namespace ControlDeGastos.Models
 {
-    [[Table("t004_gasto_encabezado")]
+    [Table("t004_gasto_encabezado")]
     public class GastoEncabezadoModel
     {
         [Column("f001_rowid_gasto_encabezado")]
@@ -10,7 +11,7 @@ namespace ControlDeGastos.Models
         public int rowid { get; set; }
 
         [Column("f002_fecha_gasto_encabezado")]
-        public Date fecha_gasto_encabezado { get; set; }
+        public DateTime fecha_gasto_encabezado { get; set; }
 
         [Column("f003_fondo_monetario_id_gasto_encabezado")]
         public int fondo_monetario_id_gasto_encabezado { get; set; }

@@ -1,9 +1,10 @@
+using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 
 namespace ControlDeGastosControlDeGastos.Models
 {
     [Table("t001_tipo_gasto")]
-    public class TipoGastoModel-+++++
+    public class TipoGastoModel
     {
         [Column("f001_rowid_tipo_gasto")]
         [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
