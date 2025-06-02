@@ -7,6 +7,7 @@
     <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
     <link rel="stylesheet" href="~/css/site.css" asp-append-version="true" />
     <link rel="stylesheet" href="~/ControlDeGastos.styles.css" asp-append-version="true" />
+    <link rel="stylesheet" href="https://cdn3.devexpress.com/jslib/23.2.6/css/dx.light.css" />
 </head>
 <body>
     <header>
@@ -52,7 +53,9 @@
                             <li class="nav-item">
                                 <a class="nav-link text-dark" asp-page="/Presupuesto/Index">Presupuestos</a>
                             </li>
-
+                            <li class="nav-item">
+                                <a class="nav-link text-dark" asp-page="/Reportes/Index">Reporte Movimientos</a>
+                            </li>
                         </ul>
                     </div>
                 </div>
@@ -74,6 +77,8 @@
     <script src="~/lib/jquery/dist/jquery.min.js"></script>
     <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
     <script src="~/js/site.js" asp-append-version="true"></script>
+    <script src="https://cdn3.devexpress.com/jslib/23.2.6/js/jszip.min.js"></script>
+    <script src="https://cdn3.devexpress.com/jslib/23.2.6/js/dx.all.js"></script>
 
     @await RenderSectionAsync("Scripts", required: false)
 </body>

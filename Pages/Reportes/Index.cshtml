@@ -1,0 +1,83 @@
+﻿@page
+@model ControlDeGastos.Pages.Reportes.MovimientosModel
+@{
+    ViewData["Title"] = "Reporte de Movimientos y Presupuestos";
+}
+
+<h2>Reporte de Movimientos y Presupuestos</h2>
+
+<form method="post" class="mt-3 mb-4">
+    <div class="row">
+        <div class="col-md-4">
+            <label asp-for="FechaInicio" class="form-label">Fecha Inicio</label>
+            <input asp-for="FechaInicio" class="form-control" type="date" />
+            <span asp-validation-for="FechaInicio" class="text-danger"></span>
+        </div>
+        <div class="col-md-4">
+            <label asp-for="FechaFin" class="form-label">Fecha Fin</label>
+            <input asp-for="FechaFin" class="form-control" type="date" />
+            <span asp-validation-for="FechaFin" class="text-danger"></span>
+        </div>
+        <div class="col-md-4 d-flex align-items-end">
+            <button type="submit" class="btn btn-primary">Filtrar</button>
+        </div>
+    </div>
+</form>
+
+<hr />
+
+<h3>Movimientos (Depósitos y Gastos)</h3>
+<div id="gridContainer" style="height: 400px;"></div>
+
+<hr />
+
+<h3>Comparativo Presupuesto vs Ejecución</h3>
+<div id="chartContainer" style="height: 400px;"></div>
+
+@section Scripts {
+    <script>
+        // Pasamos los datos del Model a JavaScript como JSON
+        const movimientosData = @Html.Raw(System.Text.Json.JsonSerializer.Serialize(Model.Movimientos));
+        const graficoData = @Html.Raw(System.Text.Json.JsonSerializer.Serialize(Model.GraficoData));
+
+        // Inicializar DataGrid DevExtreme
+        $("#gridContainer").dxDataGrid({
+            dataSource: movimientosData,
+            keyExpr: "Fecha", // no hay clave única; podrías combinar con Tipo+Descripción
+            columns: [
+                { dataField: "Fecha", caption: "Fecha", dataType: "date", format: "dd/MM/yyyy" },
+                { dataField: "Tipo", caption: "Tipo" },
+                { dataField: "Descripcion", caption: "Descripción" },
+                { dataField: "Monto", caption: "Monto", dataType: "number", format: { type: "currency", currency: "USD" } }
+            ],
+            showBorders: true,
+            paging: { pageSize: 10 },
+            sorting: { mode: "multiple" },
+            filterRow: { visible: true },
+        });
+
+        // Inicializar Chart DevExtreme
+        $("#chartContainer").dxChart({
+            dataSource: graficoData,
+            commonSeriesSettings: {
+                argumentField: "TipoGasto",
+                type: "bar"
+            },
+            series: [
+                { valueField: "Presupuestado", name: "Presupuestado" },
+                { valueField: "Ejecutado", name: "Ejecutado" }
+            ],
+            argumentAxis: {
+                label: {
+                    rotationAngle: 45,
+                    overlappingBehavior: "rotate"
+                }
+            },
+            legend: {
+                verticalAlignment: "bottom",
+                horizontalAlignment: "center"
+            },
+            title: "Presupuesto vs Ejecución por Tipo de Gasto"
+        });
+    </script>
+}
