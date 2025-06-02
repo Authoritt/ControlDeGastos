@@ -1,48 +1,221 @@
-﻿/* Please see documentation at https://learn.microsoft.com/aspnet/core/client-side/bundling-and-minification
-for details on configuring this project to bundle and minify static web assets. */
-
-a.navbar-brand {
-  white-space: normal;
-  text-align: center;
-  word-break: break-all;
+﻿/* ========================
+   1. Fondo y texto global
+   ======================== */
+body {
+    background-color: #121212 !important;
+    color: #e0e0e0 !important;
 }
 
-a {
-  color: #0077cc;
+.container,
+.container-fluid {
+    background-color: #181818;
+    color: #e0e0e0;
 }
 
+/* ========================
+   2. Navbar oscuro
+   ======================== */
+.navbar,
+.navbar.navbar-light {
+    background-color: #1f1f1f !important;
+    border-bottom: 1px solid #333333;
+}
+
+    .navbar .navbar-brand,
+    .navbar .nav-link {
+        color: #e0e0e0 !important;
+    }
+
+        .navbar .nav-link:hover {
+            color: #ffffff !important;
+        }
+
+/* ========================
+   3. Formularios (inputs, selects, textareas)
+   ======================== */
+.form-control,
+select.form-control,
+textarea.form-control {
+    background-color: #2c2c2c !important;
+    color: #e0e0e0 !important;
+    border: 1px solid #444444 !important;
+    border-radius: 0.25rem;
+}
+
+    .form-control:focus,
+    select.form-control:focus,
+    textarea.form-control:focus {
+        background-color: #2c2c2c !important;
+        color: #e0e0e0 !important;
+        border-color: #007bff !important;
+        box-shadow: 0 0 0 0.2rem rgba(0, 123, 255, 0.25) !important;
+    }
+
+/* ========================
+   4. Labels y validación
+   ======================== */
+label,
+.control-label {
+    color: #e0e0e0 !important;
+    font-weight: 500;
+}
+
+.text-danger {
+    color: #ff6b6b !important;
+}
+
+/* ========================
+   5. Botones
+   ======================== */
 .btn-primary {
-  color: #fff;
-  background-color: #1b6ec2;
-  border-color: #1861ac;
+    background-color: #1a73e8 !important;
+    border-color: #1a73e8 !important;
+    color: #ffffff !important;
 }
 
-.nav-pills .nav-link.active, .nav-pills .show > .nav-link {
-  color: #fff;
-  background-color: #1b6ec2;
-  border-color: #1861ac;
+    .btn-primary:hover {
+        background-color: #1669c1 !important;
+        border-color: #1669c1 !important;
+        color: #ffffff !important;
+    }
+
+.btn-secondary {
+    background-color: #444444 !important;
+    border-color: #444444 !important;
+    color: #e0e0e0 !important;
 }
 
-.border-top {
-  border-top: 1px solid #e5e5e5;
-}
-.border-bottom {
-  border-bottom: 1px solid #e5e5e5;
+    .btn-secondary:hover {
+        background-color: #555555 !important;
+        border-color: #555555 !important;
+        color: #ffffff !important;
+    }
+
+/* ========================
+   6. DataGrid / Tablas HTML
+   ======================== */
+/* Tablas HTML sencillas */
+table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-bottom: 1rem;
+    background-color: #181818 !important;
 }
 
-.box-shadow {
-  box-shadow: 0 .25rem .75rem rgba(0, 0, 0, .05);
+th, td {
+    border: 1px solid #444444 !important;
+    padding: 0.75rem;
+    color: #e0e0e0 !important;
 }
 
-button.accept-policy {
-  font-size: 1rem;
-  line-height: inherit;
+thead {
+    background-color: #2c2c2c !important;
 }
 
-.footer {
-  position: absolute;
-  bottom: 0;
-  width: 100%;
-  white-space: nowrap;
-  line-height: 60px;
+tbody tr:nth-child(even) {
+    background-color: #202020 !important;
+}
+
+tbody tr:nth-child(odd) {
+    background-color: #242424 !important;
+}
+
+/* DevExtreme DataGrid */
+.dx-datagrid {
+    background-color: #181818 !important;
+    color: #e0e0e0 !important;
+}
+
+    .dx-datagrid .dx-header-row .dx-header-cell {
+        background-color: #2c2c2c !important;
+        color: #ffffff !important;
+        border-right: 1px solid #444444 !important;
+    }
+
+    .dx-datagrid .dx-row:nth-child(even) {
+        background-color: #202020 !important;
+    }
+
+    .dx-datagrid .dx-row:nth-child(odd) {
+        background-color: #242424 !important;
+    }
+
+    .dx-datagrid .dx-cell {
+        color: #e0e0e0 !important;
+    }
+
+    .dx-datagrid .dx-link {
+        color: #1a73e8 !important;
+    }
+
+        .dx-datagrid .dx-link:hover {
+            color: #ffffff !important;
+        }
+
+/* ========================
+   7. DevExtreme Chart
+   ======================== */
+.dx-chart {
+    background-color: #181818 !important;
+}
+
+    .dx-chart .dx-chart-title,
+    .dx-chart .dx-legend,
+    .dx-chart .dx-axis .dx-label {
+        color: #e0e0e0 !important;
+    }
+
+    .dx-chart .dx-series .dx-bar {
+        opacity: 0.9;
+    }
+
+    .dx-chart .dx-tooltip {
+        background-color: #2c2c2c !important;
+        border: 1px solid #444444 !important;
+        color: #ffffff !important;
+    }
+
+/* ========================
+   8. Otros componentes
+   ======================== */
+/* Paginación, filtros, etc. */
+.dx-pager,
+.dx-pager .dx-page,
+.dx-pager .dx-page-active {
+    background-color: #2c2c2c !important;
+    color: #e0e0e0 !important;
+}
+
+.dx-filter-row .dx-filter-operation-icon,
+.dx-filter-row .dx-filter-range-content {
+    color: #e0e0e0 !important;
+}
+
+/* Back to top: estilos generales */
+h1, h2, h3, h4, h5, h6 {
+    color: #ffffff !important;
+}
+
+a, a.nav-link {
+    color: #cfcfcf !important;
+}
+
+    a:hover, a.nav-link:hover {
+        color: #ffffff !important;
+    }
+
+    }
+
+    table tbody tr:nth-child(even) {
+        background-color: #1F1F1F !important;
+    }
+
+/* ============== Opcional: responsive para tablas ============== */
+@media (max-width: 768px) {
+    table.table,
+    table {
+        display: block;
+        width: 100%;
+        overflow-x: auto;
+    }
 }
