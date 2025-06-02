@@ -8,17 +8,17 @@ namespace ControlDeGastos.Models
     public class GastoDetalleModel
     {
         [Key]
-        [Column("f001_rowid")]
+        [Column("f005_rowid")]
         [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
         public int rowid { get; set; }
 
-        [Column("f002_encabezado_id")]
+        [Column("f005_encabezado_id")]
         public int encabezado_id { get; set; }
 
-        [Column("f003_tipo_gasto_id")]
+        [Column("f005_tipo_gasto_id")]
         public int tipo_gasto_id { get; set; }
 
-        [Column("f004_monto")]
+        [Column("f005_monto")]
         //[Column(TypeName = "decimal(18,2)")]
         public decimal monto { get; set; }
 

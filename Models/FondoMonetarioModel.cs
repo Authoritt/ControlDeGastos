@@ -7,7 +7,7 @@ namespace ControlDeGastos.Models
     public class FondoMonetarioModel
     {
         [Key]
-        [Column("f001_rowid")]
+        [Column("f002_rowid")]
         [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
         public int rowid { get; set; }
 
@@ -16,9 +16,9 @@ namespace ControlDeGastos.Models
         [StringLength(100)]
         public string nombre { get; set; } // Ej: "Cuenta Bancaria X"
 
-        [Column("f003_tipo")]
+        [Column("f002_tipo")]
         [Required]
-        [StringLength(20)]
+        [StringLength(30)]
         public string tipo { get; set; } // "Bancario" o "Efectivo"
 
         // Relaciones

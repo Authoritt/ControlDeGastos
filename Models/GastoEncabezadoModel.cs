@@ -7,25 +7,25 @@ namespace ControlDeGastos.Models
     public class GastoEncabezadoModel
     {
         [Key]
-        [Column("f001_rowid")]
+        [Column("f004_rowid")]
         [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
         public int rowid { get; set; }
 
-        [Column("f002_fecha")]
+        [Column("f004_fecha")]
         public DateTime fecha { get; set; }
 
-        [Column("f003_fondo_monetario_id")]
+        [Column("f004_fondo_monetario_id")]
         public int fondo_monetario_id { get; set; }
 
         [Column("f004_observaciones")]
         [StringLength(500)]
         public string observaciones { get; set; }
 
-        [Column("f005_nombre_comercio")]
+        [Column("f004_nombre_comercio")]
         [StringLength(100)]
         public string nombre_comercio { get; set; }
 
-        [Column("f006_tipo_documento")]
+        [Column("f004_tipo_documento")]
         [StringLength(20)]
         public string tipo_documento { get; set; } // Factura/Comprobante/Otro
 

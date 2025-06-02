@@ -4,6 +4,7 @@ using ControlDeGastos.Data;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 #nullable disable
@@ -11,9 +12,11 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace ControlDeGastos.Migrations
 {
     [DbContext(typeof(ControlDeGastosContext))]
-    partial class ControlDeGastosContextModelSnapshot : ModelSnapshot
+    [Migration("20250602165606_Inicial11")]
+    partial class Inicial11
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -27,21 +30,21 @@ namespace ControlDeGastos.Migrations
                     b.Property<int>("rowid")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("int")
-                        .HasColumnName("f006_rowid");
+                        .HasColumnName("f001_rowid");
 
                     SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("rowid"));
 
                     b.Property<DateTime>("fecha")
                         .HasColumnType("datetime2")
-                        .HasColumnName("f006_fecha");
+                        .HasColumnName("f002_fecha");
 
                     b.Property<int>("fondo_monetario_id")
                         .HasColumnType("int")
-                        .HasColumnName("f006_fondo_monetario_id");
+                        .HasColumnName("f003_fondo_monetario_id");
 
                     b.Property<decimal>("monto")
                         .HasColumnType("decimal(18,2)")
-                        .HasColumnName("f006_monto");
+                        .HasColumnName("f004_monto");
 
                     b.HasKey("rowid");
 
@@ -55,7 +58,7 @@ namespace ControlDeGastos.Migrations
                     b.Property<int>("rowid")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("int")
-                        .HasColumnName("f002_rowid");
+                        .HasColumnName("f001_rowid");
 
                     SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("rowid"));
 
@@ -69,7 +72,7 @@ namespace ControlDeGastos.Migrations
                         .IsRequired()
                         .HasMaxLength(20)
                         .HasColumnType("nvarchar(20)")
-                        .HasColumnName("f002_tipo");
+                        .HasColumnName("f003_tipo");
 
                     b.HasKey("rowid");
 
@@ -81,21 +84,21 @@ namespace ControlDeGastos.Migrations
                     b.Property<int>("rowid")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("int")
-                        .HasColumnName("f005_rowid");
+                        .HasColumnName("f001_rowid");
 
                     SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("rowid"));
 
                     b.Property<int>("encabezado_id")
                         .HasColumnType("int")
-                        .HasColumnName("f005_encabezado_id");
+                        .HasColumnName("f002_encabezado_id");
 
                     b.Property<decimal>("monto")
                         .HasColumnType("decimal(18,2)")
-                        .HasColumnName("f005_monto");
+                        .HasColumnName("f004_monto");
 
                     b.Property<int>("tipo_gasto_id")
                         .HasColumnType("int")
-                        .HasColumnName("f005_tipo_gasto_id");
+                        .HasColumnName("f003_tipo_gasto_id");
 
                     b.HasKey("rowid");
 
@@ -111,23 +114,23 @@ namespace ControlDeGastos.Migrations
                     b.Property<int>("rowid")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("int")
-                        .HasColumnName("f004_rowid");
+                        .HasColumnName("f001_rowid");
 
                     SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("rowid"));
 
                     b.Property<DateTime>("fecha")
                         .HasColumnType("datetime2")
-                        .HasColumnName("f004_fecha");
+                        .HasColumnName("f002_fecha");
 
                     b.Property<int>("fondo_monetario_id")
                         .HasColumnType("int")
-                        .HasColumnName("f004_fondo_monetario_id");
+                        .HasColumnName("f003_fondo_monetario_id");
 
                     b.Property<string>("nombre_comercio")
                         .IsRequired()
                         .HasMaxLength(100)
                         .HasColumnType("nvarchar(100)")
-                        .HasColumnName("f004_nombre_comercio");
+                        .HasColumnName("f005_nombre_comercio");
 
                     b.Property<string>("observaciones")
                         .IsRequired()
@@ -139,7 +142,7 @@ namespace ControlDeGastos.Migrations
                         .IsRequired()
                         .HasMaxLength(20)
                         .HasColumnType("nvarchar(20)")
-                        .HasColumnName("f004_tipo_documento");
+                        .HasColumnName("f006_tipo_documento");
 
                     b.HasKey("rowid");
 
@@ -153,21 +156,21 @@ namespace ControlDeGastos.Migrations
                     b.Property<int>("rowid")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("int")
-                        .HasColumnName("f003_rowid");
+                        .HasColumnName("f001_rowid");
 
                     SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("rowid"));
 
                     b.Property<int>("anio")
                         .HasColumnType("int")
-                        .HasColumnName("f003_anio");
+                        .HasColumnName("f005_anio");
 
                     b.Property<int>("mes")
                         .HasColumnType("int")
-                        .HasColumnName("f003_mes");
+                        .HasColumnName("f004_mes");
 
                     b.Property<decimal>("monto")
                         .HasColumnType("decimal(18,2)")
-                        .HasColumnName("f003_monto");
+                        .HasColumnName("f006_monto");
 
                     b.Property<int>("tipo_gasto_id")
                         .HasColumnType("int")
@@ -176,7 +179,7 @@ namespace ControlDeGastos.Migrations
                     b.Property<string>("usuario_id")
                         .IsRequired()
                         .HasColumnType("nvarchar(450)")
-                        .HasColumnName("f003_usuario_id");
+                        .HasColumnName("f002_usuario_id");
 
                     b.HasKey("rowid");
 
@@ -200,13 +203,13 @@ namespace ControlDeGastos.Migrations
                         .IsRequired()
                         .HasMaxLength(100)
                         .HasColumnType("nvarchar(100)")
-                        .HasColumnName("f001_Descripcion");
+                        .HasColumnName("f003_Descripcion");
 
                     b.Property<string>("nombre")
                         .IsRequired()
                         .HasMaxLength(35)
                         .HasColumnType("nvarchar(35)")
-                        .HasColumnName("f001_nombre");
+                        .HasColumnName("f002_nombre");
 
                     b.HasKey("rowid");
 

@@ -9,11 +9,11 @@ namespace ControlDeGastos.Models
     public class PresupuestoModel
     {
         [Key]
-        [Column("f001_rowid")]
+        [Column("f003_rowid")]
         [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
         public int rowid { get; set; }
 
-        [Column("f002_usuario_id")]
+        [Column("f003_usuario_id")]
         [Required]
         public string usuario_id { get; set; } // Relación con IdentityUser
 
@@ -21,14 +21,14 @@ namespace ControlDeGastos.Models
         [Required]
         public int tipo_gasto_id { get; set; }
 
-        [Column("f004_mes")]
+        [Column("f003_mes")]
         [Range(1, 12)]
         public int mes { get; set; }
 
-        [Column("f005_anio")]
+        [Column("f003_anio")]
         public int anio { get; set; }
 
-        [Column("f006_monto")]
+        [Column("f003_monto")]
         //[Column(TypeName = "decimal(18,2)")]
         public decimal monto { get; set; }
 
