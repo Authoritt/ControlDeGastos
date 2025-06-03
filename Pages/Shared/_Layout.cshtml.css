@@ -1,1 +1,11 @@
-﻿
+﻿/* ========================
+   1. Fondo y texto global
+   ======================== */
+nav {
+    background-color: blue !important;
+    color: blue !important;
+}
+
+.container {
+    background-color: blue !important;
+}
