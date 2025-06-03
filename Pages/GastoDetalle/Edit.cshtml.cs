@@ -37,7 +37,7 @@ namespace ControlDeGastos.Pages_GastoDetalle
             }
             GastoDetalleModel = gastodetallemodel;
            ViewData["encabezado_id"] = new SelectList(_context.GastosEncabezado, "rowid", "rowid");
-           ViewData["tipo_gasto_id"] = new SelectList(_context.TiposGasto, "rowid", "codigo");
+           ViewData["tipo_gasto_id"] = new SelectList(_context.TiposGasto, "rowid", "Descripcion");
             return Page();
         }
 
@@ -45,6 +45,7 @@ namespace ControlDeGastos.Pages_GastoDetalle
         // For more information, see https://aka.ms/RazorPagesCRUD.
         public async Task<IActionResult> OnPostAsync()
         {
+
 
             _context.Attach(GastoDetalleModel).State = EntityState.Modified;
 

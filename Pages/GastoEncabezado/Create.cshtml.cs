@@ -32,7 +32,7 @@ namespace ControlDeGastos.Pages_GastoEncabezado
         public async Task<IActionResult> OnPostAsync()
         {
 
-
+ 
             _context.GastosEncabezado.Add(GastoEncabezadoModel);
             await _context.SaveChangesAsync();
 

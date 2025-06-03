@@ -12,6 +12,9 @@ namespace ControlDeGastos.Models
         [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
         public int rowid { get; set; }
 
+        [Column("f005_fecha")]
+        public DateTime Fecha { get; set; }
+
         [Column("f005_encabezado_id")]
         public int encabezado_id { get; set; }
 

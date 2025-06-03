@@ -36,7 +36,7 @@ namespace ControlDeGastos.Pages_Presupuesto
                 return NotFound();
             }
             PresupuestoModel = presupuestomodel;
-           ViewData["tipo_gasto_id"] = new SelectList(_context.TiposGasto, "rowid", "codigo");
+           ViewData["tipo_gasto_id"] = new SelectList(_context.TiposGasto, "rowid", "nombre");
            ViewData["usuario_id"] = new SelectList(_context.Users, "Id", "Id");
             return Page();
         }
