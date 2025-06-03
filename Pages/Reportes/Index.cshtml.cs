@@ -54,7 +54,7 @@ namespace ControlDeGastos.Pages.Reportes
 
             var gastosEnc = await _context.GastosEncabezado
                 .Where(g => g.fecha >= FechaInicio && g.fecha <= FechaFin)
-                .Include(g => g.Detalles) // asumiendo que GastoEncabezado tiene colección Detalles
+                .Include(g => g.Detalles).ThenInclude(d => d.TipoGasto)
                 .ToListAsync();
 
             var gastos = gastosEnc.SelectMany(g => g.Detalles.Select(det => new MovimientoDto

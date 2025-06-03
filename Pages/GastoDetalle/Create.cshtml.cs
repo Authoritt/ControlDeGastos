@@ -25,7 +25,7 @@ namespace ControlDeGastos.Pages_GastoDetalle
 
         public IActionResult OnGet()
         {
-        ViewData["encabezado_id"] = new SelectList(_context.GastosEncabezado, "rowid", "rowid");
+        ViewData["encabezado_id"] = new SelectList(_context.GastosEncabezado, "rowid", "nombre");
         ViewData["tipo_gasto_id"] = new SelectList(_context.TiposGasto, "rowid", "Descripcion");
             return Page();
         }
@@ -37,8 +37,56 @@ namespace ControlDeGastos.Pages_GastoDetalle
         public async Task<IActionResult> OnPostAsync()
         {
 
-            // Dentro de tu método async (por ejemplo, OnPostAsync):
             string sql = @"
+select 1 from t003_presupuesto
+			where f003_tipo_gasto_id = @p_tipo_gasto_id
+and f003_mes= month(@p_fecha)
+and f003_anio= year(@p_fecha)
+";
+
+            int resultado = 0;
+
+            // Obtenemos la cadena de conexión desde el DbContext
+            var connectionString = _context.Database.GetConnectionString();
+
+            await using (var connection = new SqlConnection(connectionString))
+            {
+                await connection.OpenAsync();
+
+                await using (var command = new SqlCommand(sql, connection))
+                {
+                    // Definimos cada parámetro:
+
+                    command.Parameters.Add(new SqlParameter("@p_tipo_gasto_id", SqlDbType.Int)
+                    { Value = GastoDetalleModel.tipo_gasto_id });
+                    command.Parameters.Add(new SqlParameter("@p_fecha", SqlDbType.DateTime)
+                    { Value = GastoDetalleModel.Fecha });
+
+                    // ExecuteScalarAsync devuelve el primer valor de la primera fila:
+                    var scalar = await command.ExecuteScalarAsync();
+                    if (scalar != null && scalar != DBNull.Value)
+                    {
+                        resultado = Convert.ToInt32(scalar);
+                    }
+                }
+            }
+
+            if (resultado == 1)
+            {
+
+                var tipos = await _context.TiposGasto.AsNoTracking().ToListAsync();
+                var encabezados = await _context.GastosEncabezado.AsNoTracking().ToListAsync();
+                ViewData["tipo_gasto_id"] = new SelectList(tipos, "rowid", "nombre");
+                ViewData["encabezado_id"] = new SelectList(encabezados, "rowid", "rowid");
+
+                ModelState.AddModelError(string.Empty, "No existe un presupuesto para el rango de fechas seleccionadas");
+
+                return Page();
+            }
+
+
+            // Dentro de tu método async (por ejemplo, OnPostAsync):
+            sql = @"
     SELECT CASE 
              WHEN f003_monto < (t.montoAcum + @p_monto) 
              THEN 1 
@@ -69,10 +117,10 @@ namespace ControlDeGastos.Pages_GastoDetalle
       AND f003_anio       = YEAR(@p_fecha);
 ";
 
-            int resultado = 0;
+             resultado = 0;
 
             // Obtenemos la cadena de conexión desde el DbContext
-            var connectionString = _context.Database.GetConnectionString();
+             connectionString = _context.Database.GetConnectionString();
 
             await using (var connection = new SqlConnection(connectionString))
             {
@@ -111,6 +159,8 @@ namespace ControlDeGastos.Pages_GastoDetalle
 
                 return Page();
             }
+
+
 
             _context.GastosDetalle.Add(GastoDetalleModel);
             await _context.SaveChangesAsync();
